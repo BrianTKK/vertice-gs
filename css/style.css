@@ -840,6 +840,14 @@ span{
   /* Padding (0.65rem), min-height (80px), and icon size (1rem) are inherited from <460px and <576px respectively */
 }
 
+/* Increase width of info boxes' parent container on very small screens to give more space */
+@media (max-width: 390px) {
+  .hero-section .position-absolute[class*="translate-middle"] {
+    width: 90% !important; 
+    /* Centering is handled by existing Bootstrap classes: top-50, start-50, translate-middle */
+  }
+}
+
 /* Further adjustments for very narrow screens (e.g., 320px-360px) */
 @media (max-width: 360px) {
   .hero-section h1 {
