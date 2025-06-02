@@ -10,12 +10,19 @@
   --brasil-blue: #002776;
   --green-primary: #059669;
   --green-light: #10b981;
+  --green-darker-for-btn: #036040; /* Added for .btn-primary hover & .btn-outline-success hover */
   --blue-primary: #3b82f6;
   --blue-light: #60a5fa;
+  --blue-darker-for-btn: #0058CC; /* Added for .btn-primary & .btn-outline-primary */
   --yellow-primary: #f59e0b;
   --yellow-light: #fbbf24;
+  --yellow-darker-for-btn: #B87500; /* Added for .btn-outline-warning */
   --red-primary: #ef4444;
   --red-light: #f87171;
+  --red-darker-for-btn: #B71C1C; /* Added for .btn-danger */
+  --red-gradient-darker-start: #c00000; /* for btn-emergency */
+  --orange-gradient-darker-end: #d16002; /* for btn-emergency */
+  --info-darker-for-btn: #0B819B; /* Added for .btn-outline-info */
   --gray-50: #f9fafb;
   --gray-100: #f3f4f6;
   --gray-200: #e5e7eb;
@@ -76,9 +83,15 @@ html {
 /* Navbar customizada */
 .navbar {
   padding: 1rem 0;
-  margin-inline: 1rem;
+  /* margin-inline: 1rem; */ /* Removed for better control with media queries */
   backdrop-filter: blur(10px);
   background-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+@media (min-width: 576px) {
+  .navbar {
+    margin-inline: 1rem; /* Apply margin for screens larger than sm */
+  }
 }
 
 .navbar-brand .brand-icon {
@@ -118,7 +131,8 @@ html {
 }
 
 .btn-emergency {
-  background: linear-gradient(135deg, var(--red-primary), #f97316);
+  /* Adjusted for WCAG AA with white text */
+  background: linear-gradient(135deg, var(--red-gradient-darker-start), var(--orange-gradient-darker-end));
   border: none;
   color: white;
   font-weight: 600;
@@ -129,7 +143,8 @@ html {
 }
 
 .btn-emergency:hover {
-  background: linear-gradient(135deg, #dc2626, #ea580c);
+  /* Adjusted for WCAG AA with white text - slightly darker than default */
+  background: linear-gradient(135deg, #a00000, #b05001); /* Darkened versions of hover state */
   color: white;
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
@@ -193,13 +208,15 @@ html {
 }
 
 /* Botões personalizados */
+/* Custom .btn-primary with gradient, adjusted for WCAG AA with white text */
 .btn-primary {
   background: linear-gradient(
     135deg,
-    var(--green-primary),
-    var(--blue-primary)
+    var(--green-darker-for-btn), 
+    var(--blue-darker-for-btn) 
   );
   border: none;
+  color: white !important; /* Ensure text is white */
   font-weight: 600;
   padding: 0.75rem 2rem;
   border-radius: 6px;
@@ -207,28 +224,101 @@ html {
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, var(--green-light), var(--blue-light));
+  /* Keep the same dark gradient as default for guaranteed contrast on hover */
+  background: linear-gradient(
+    135deg,
+    var(--green-darker-for-btn), 
+    var(--blue-darker-for-btn) 
+  ); 
+  filter: brightness(110%); /* Slightly lighten on hover as an alternative visual cue */
+  color: white !important; /* Ensure text is white */
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(5, 150, 105, 0.3);
 }
 
-.btn-outline-success {
-  border: 2px solid white;
+/* Custom .btn-outline-success on Hero, adjusted for WCAG AA */
+/* This applies to the .btn-outline-success specifically in the .hero-section */
+.hero-section .btn-outline-success {
+  border: 2px solid var(--green-darker-for-btn); /* Border matching the new BG */
   color: white;
   font-weight: 600;
   padding: 0.75rem 2rem;
   border-radius: 6px;
-  background-color: transparent;
+  background-color: var(--green-darker-for-btn); /* Solid background for default state */
   transition: all 0.3s ease;
 }
 
-.btn-outline-success:hover {
-  background-color: var(--green-primary);
-  border-color: var(--green-primary);
+.hero-section .btn-outline-success:hover {
+  background-color: var(--green-darker-for-btn); /* Keep dark bg for contrast */
+  filter: brightness(115%); /* Slightly lighten on hover */
+  border-color: var(--green-darker-for-btn); 
   color: white;
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(5, 150, 105, 0.3);
 }
+
+/* Standard Bootstrap button overrides for contrast */
+
+/* .btn-danger: Already uses var(--red-primary). Override for better contrast. */
+.btn-danger {
+  background-color: var(--red-darker-for-btn) !important; /* Important to override Bootstrap */
+  border-color: var(--red-darker-for-btn) !important;
+  color: white !important;
+}
+.btn-danger:hover {
+  background-color: #901010 !important; /* Darkened for better contrast (5.5:1 with white) */
+  border-color: #901010 !important;
+  color: white !important;
+}
+
+
+/* .btn-outline-primary */
+.btn-outline-primary {
+  color: var(--blue-darker-for-btn);
+  border-color: var(--blue-darker-for-btn);
+}
+.btn-outline-primary:hover {
+  background-color: var(--blue-darker-for-btn);
+  border-color: var(--blue-darker-for-btn);
+  color: white;
+}
+
+/* .btn-outline-warning */
+.btn-outline-warning {
+  color: var(--yellow-darker-for-btn);
+  border-color: var(--yellow-darker-for-btn);
+}
+.btn-outline-warning:hover {
+  background-color: var(--yellow-darker-for-btn);
+  border-color: var(--yellow-darker-for-btn);
+  color: white;
+}
+
+/* .btn-outline-info */
+/* Assuming .btn-outline-info is used, providing a fix */
+.btn-outline-info {
+  color: var(--info-darker-for-btn);
+  border-color: var(--info-darker-for-btn);
+}
+.btn-outline-info:hover {
+  background-color: var(--info-darker-for-btn);
+  border-color: var(--info-darker-for-btn);
+  color: white;
+}
+
+/* .btn-outline-light on dark backgrounds */
+.bg-danger .btn-outline-light,
+.bg-dark .btn-outline-light { /* Assuming .bg-dark might be used too */
+  color: var(--gray-900) !important; /* Dark text for contrast on red/dark background */
+  border-color: var(--gray-700) !important; /* Darker border */
+}
+.bg-danger .btn-outline-light:hover,
+.bg-dark .btn-outline-light:hover {
+  color: var(--gray-900) !important;
+  background-color: var(--gray-200) !important; /* Lighter background for hover */
+  border-color: var(--gray-300) !important;
+}
+
 
 /* Stats Section */
 .stats-section {
@@ -300,6 +390,12 @@ html {
   transition: all 0.3s ease;
   border: 1px solid var(--gray-200);
   height: 100%;
+}
+
+@media (max-width: 576px) {
+  .project-card {
+    padding: 1rem; /* Reduce padding on small screens */
+  }
 }
 
 .project-card:hover {
@@ -382,9 +478,21 @@ html {
   height: 100%;
 }
 
+@media (max-width: 576px) {
+  .help-card {
+    padding: 1rem; /* Reduce padding on small screens */
+  }
+}
+
 .help-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 576px) {
+  .stats-card {
+    padding: 1rem; /* Reduce padding on small screens */
+  }
 }
 
 .help-icon {
@@ -568,6 +676,93 @@ span{
 .page-header .lead {
   font-size: 1.25rem;
   color: var(--gray-600);
+}
+
+/* Additional responsive adjustments for smaller screens */
+@media (max-width: 576px) {
+  .hero-section h1 {
+    font-size: 2rem; /* Further reduce h1 font size on very small screens */
+  }
+
+  .hero-section .lead {
+    font-size: 1rem; /* Reduce lead paragraph font size */
+  }
+
+  .btn-lg {
+    padding: 0.6rem 1.2rem; /* Adjust padding for large buttons */
+    font-size: 0.9rem; /* Adjust font size for large buttons */
+  }
+
+  .display-4 {
+    font-size: 2.5rem; /* Adjust display-4 font size */
+  }
+
+  .navbar-nav .nav-link {
+    padding: 0.5rem 0.75rem !important; /* Adjust nav link padding */
+    margin: 0.25rem 0; /* Adjust nav link margin for vertical stacking */
+  }
+
+  .btn-emergency {
+    width: 100%; /* Make emergency button full width in navbar on small screens */
+    margin-top: 0.5rem;
+    margin-left: 0 !important; /* Override ms-3 */
+  }
+
+  .footer .col-lg-4,
+  .footer .col-lg-2,
+  .footer .col-md-6 {
+    text-align: center; /* Center footer content on small screens */
+  }
+
+  .footer .emergency-contacts {
+    display: inline-block; /* Allow centering of this block */
+    text-align: left; /* Keep text within the block left-aligned */
+  }
+
+  .emergency-alert .d-flex.align-items-center {
+    flex-direction: column; /* Stack icon and text vertically */
+    text-align: center;
+  }
+
+  .emergency-alert .fa-2x {
+    margin-bottom: 0.5rem; /* Add space below icon */
+    margin-right: 0 !important; /* Remove right margin */
+  }
+
+  .emergency-alert .text-lg-end {
+    text-align: center !important; /* Center buttons */
+  }
+
+  .emergency-alert .d-flex.flex-wrap.gap-2.justify-content-lg-end {
+    justify-content: center !important; /* Center buttons */
+  }
+
+  .btn-group {
+    flex-wrap: wrap; /* Allow button groups to wrap on small screens */
+  }
+
+  /* Reduce padding for general cards within content sections on small screens */
+  .py-5 .card,
+  section:not(.page-header):not(.hero-section) .card { /* Target cards in content sections */
+    padding: 1rem; /* Default reduced padding */
+  }
+
+  .py-5 .card .card-body, /* Ensure card-body within these cards also has adjusted padding if p-* classes are on card-body */
+  section:not(.page-header):not(.hero-section) .card .card-body {
+    padding: 1.25rem; /* Slightly more than card if card itself has no padding classes */
+  }
+
+  /* Override for specific cards if they have explicit large padding like p-4, p-5 */
+  .py-5 .card.p-4, .py-5 .card.p-5,
+  section:not(.page-header):not(.hero-section) .card.p-4,
+  section:not(.page-header):not(.hero-section) .card.p-5 {
+    padding: 1.5rem !important; /* Use important if Bootstrap utilities are overriding */
+  }
+  .py-5 .card .card-body.p-4, .py-5 .card .card-body.p-5,
+  section:not(.page-header):not(.hero-section) .card .card-body.p-4,
+  section:not(.page-header):not(.hero-section) .card .card-body.p-5 {
+    padding: 1.5rem !important;
+  }
 }
 
 /* Utilities */
