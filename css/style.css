@@ -626,6 +626,19 @@ span{
   }
 }
 
+/* Ensure text centralization for hero info boxes on screens < 768px */
+@media (max-width: 767.98px) {
+  .hero-section .position-absolute[class*="translate-middle"] .row.g-2 .col-6 > div[class*="bg-white"] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-section .position-absolute[class*="translate-middle"] .row.g-2 .col-6 > div[class*="bg-white"] .fw-bold {
+    text-align: center;
+  }
+}
+
 /* Animações */
 @keyframes fadeInUp {
   from {
@@ -776,28 +789,59 @@ span{
   section:not(.page-header):not(.hero-section) .card .card-body.p-5 {
     padding: 1.5rem !important;
   }
-
-  /* Specific adjustments for hero section info boxes on small screens */
+  /* Specific adjustments for hero section info boxes on small screens (ensure this is part of the main <576px block) */
   .hero-section .position-absolute[class*="translate-middle"] .row.g-2 .col-6 > div[class*="bg-white"] {
     padding: 0.5rem !important; /* Reduced padding from Bootstrap p-3 */
-    display: flex; /* Enable flex for better control of icon and text */
-    flex-direction: column; /* Stack icon and text vertically */
-    align-items: center; /* Center items */
-    justify-content: center; /* Center items */
     min-height: 80px; /* Give a bit of min-height if content varies */
+    /* Flex properties are inherited from the <767.98px rule */
   }
 
   .hero-section .position-absolute[class*="translate-middle"] .row.g-2 .col-6 > div[class*="bg-white"] .fw-bold {
     font-size: 0.7rem; /* Reduced font size */
     line-height: 1.2; /* Adjust line height for smaller font */
-    text-align: center; /* Ensure text is centered */
+    /* text-align: center; is inherited from the <767.98px rule */
   }
 
   .hero-section .position-absolute[class*="translate-middle"] .row.g-2 .col-6 > div[class*="bg-white"] > i.fas {
     font-size: 1rem; /* Adjusted icon size */
     margin-bottom: 0.25rem; /* Space between icon and text */
   }
+
+  /* Reduce bottom margin for lead paragraph in hero on small screens */
+  .hero-section p.lead {
+    margin-bottom: 2rem !important; /* Was mb-5 (3rem) */
+  }
+} /* This closes the @media (max-width: 576px) block properly */
+
+/* Hero section info boxes: Adjust font size for very small screens for legibility */
+@media (max-width: 475px) {
+  .hero-section .position-absolute[class*="translate-middle"] .row.g-2 .col-6 > div[class*="bg-white"] .fw-bold {
+    font-size: 0.8rem; /* Slightly larger than the 0.7rem at <576px for better legibility */
+  }
+  /* Other properties like padding, min-height, icon size will be inherited from the <576px query */
 }
+
+/* Further adjustments for very narrow screens (e.g., 320px-360px) */
+@media (max-width: 360px) {
+  .hero-section h1 {
+    font-size: 1.75rem; /* Further reduce H1 font size */
+  }
+}
+
+/* Accessibility Fix: Improve contrast for icons in Hero Section Info Boxes */
+.hero-section .position-absolute[class*="translate-middle"] .row.g-2 .col-6 > div[class*="bg-white"] > i.text-primary {
+  color: var(--blue-darker-for-btn) !important;
+}
+.hero-section .position-absolute[class*="translate-middle"] .row.g-2 .col-6 > div[class*="bg-white"] > i.text-warning {
+  color: var(--yellow-darker-for-btn) !important;
+}
+.hero-section .position-absolute[class*="translate-middle"] .row.g-2 .col-6 > div[class*="bg-white"] > i.text-success {
+  color: var(--green-darker-for-btn) !important;
+}
+.hero-section .position-absolute[class*="translate-middle"] .row.g-2 .col-6 > div[class*="bg-white"] > i.text-info {
+  color: var(--info-darker-for-btn) !important;
+}
+
 
 /* Utilities */
 .text-brasil-green {
