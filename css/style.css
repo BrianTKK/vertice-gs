@@ -821,6 +821,25 @@ span{
   /* Other properties like padding, min-height, icon size will be inherited from the <576px query */
 }
 
+/* Hero section info boxes: Adjustments for screens < 460px for better text fit */
+@media (max-width: 460px) {
+  .hero-section .position-absolute[class*="translate-middle"] .row.g-2 .col-6 > div[class*="bg-white"] {
+    padding: 0.65rem !important; /* Increased padding slightly from 0.5rem */
+  }
+  .hero-section .position-absolute[class*="translate-middle"] .row.g-2 .col-6 > div[class*="bg-white"] .fw-bold {
+    font-size: 0.75rem; /* Slightly reduced font from 0.8rem (at <475px) to balance with padding */
+  }
+}
+
+/* Fine-tuning for very narrow screens like 320px to prevent text overflow in hero info boxes */
+@media (max-width: 430px) {
+  .hero-section .position-absolute[class*="translate-middle"] .row.g-2 .col-6 > div[class*="bg-white"] .fw-bold {
+    font-size: 0.7rem; /* Further reduce font size */
+    overflow-wrap: break-word; /* Allow long words to break to prevent overflow */
+  }
+  /* Padding (0.65rem), min-height (80px), and icon size (1rem) are inherited from <460px and <576px respectively */
+}
+
 /* Further adjustments for very narrow screens (e.g., 320px-360px) */
 @media (max-width: 360px) {
   .hero-section h1 {
