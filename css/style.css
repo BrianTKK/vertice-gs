@@ -462,9 +462,7 @@ html {
   /* text-align: center; is likely inherited or set on parent, but can be added if needed */
 }
 
-.help-card .btn {
-  margin-top: auto !important; /* Force button to the bottom of the flex container */
-}
+/* .help-card .btn rule will be modified/removed later */
 
 @media (max-width: 576px) {
   .project-card {
@@ -550,7 +548,19 @@ html {
   transition: all 0.3s ease;
   border: 1px solid var(--gray-200);
   height: 100%;
+  display: flex !important; /* Ensure flex layout for vertical alignment */
+  flex-direction: column !important; /* Arrange items in a column */
+  /* text-align: center; is likely inherited or set by a utility class on the element */
 }
+
+.help-card p.text-muted.mb-4 {
+  flex-grow: 1; /* Allow paragraph to take available space */
+}
+
+/* Remove margin-top: auto from .help-card .btn if it exists, or ensure it's not there */
+/* The existing .help-card .btn rule that had margin-top: auto !important at line 428 will be adjusted. */
+/* If that was its only style, it will effectively be removed/overridden by specificity or later rules if any. */
+/* For now, we add the paragraph rule and will handle the .btn rule specifically. */
 
 @media (max-width: 576px) {
   .help-card {
