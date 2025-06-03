@@ -222,7 +222,7 @@ html {
   }
   .hero-section .position-absolute[class*="translate-middle"] .row.g-2 .col-6 > div[class*="bg-white"] .fw-bold {
     font-size: 0.9rem; /* Slightly reduce font size from default 1rem */
-    /* overflow-wrap: break-word; */ /* Consider if specific long words are still an issue */
+    overflow-wrap: break-word; /* Allow long words like "Monitoramento" to wrap if needed */
   }
 }
 
