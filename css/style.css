@@ -215,19 +215,11 @@ html {
   color: #fff !important; /* ou a cor desejada */
 }
 
-/* Desktop Laptops (992px - 1399.98px): Adjust hero info box sizing for better text fit */
+/* Desktop Laptops (992px - 1399.98px): Adjust hero info box sizing for better text fit and single-line text */
 @media (min-width: 992px) and (max-width: 1399.98px) {
-  .hero-section .position-absolute[class*="translate-middle"] .row.g-2 .col-6 > div[class*="bg-white"] {
-    padding: 1.25rem !important; /* Increased padding from 1rem (p-3 default) */
+  .hero-section .position-absolute[class*="translate-middle"] { /* Target the container */
+    width: 100% !important; /* Make container full width of its parent col-lg-6 to maximize space for info boxes */
   }
-  .hero-section .position-absolute[class*="translate-middle"] .row.g-2 .col-6 > div[class*="bg-white"] .fw-bold {
-    font-size: 0.9rem; /* Slightly reduce font size from default 1rem */
-    /* overflow-wrap: break-word; removed as per plan */
-  }
-}
-
-/* Medium Desktops (992px - 1199.98px): Widen info boxes for single-line text, ensure font size is 0.9rem */
-@media (min-width: 992px) and (max-width: 1199.98px) {
   .hero-section .position-absolute[class*="translate-middle"] .row.g-2 .col-6 > div[class*="bg-white"] {
     padding-top: 1.25rem !important;
     padding-bottom: 1.25rem !important;
@@ -235,11 +227,33 @@ html {
     padding-right: 2rem !important;   /* Increased horizontal padding */
   }
   .hero-section .position-absolute[class*="translate-middle"] .row.g-2 .col-6 > div[class*="bg-white"] .fw-bold {
-    font-size: 0.9rem; /* Ensure font size is 0.9rem, inheriting or re-stating from broader rule */
+    font-size: 0.9rem; /* Slightly reduce font size from default 1rem */
     overflow-wrap: normal !important; /* Prevent word wrapping */
     word-break: normal !important;    /* Prevent word breaking */
   }
 }
+
+/* The more specific @media (min-width: 992px) and (max-width: 1199.98px) block is now redundant due to consolidation */
+/* and can be removed if its styles are identical or fully merged into the block above. */
+/* For now, leaving it commented out or to be removed in a separate cleanup if this consolidation is final. */
+/*
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .hero-section .position-absolute[class*="translate-middle"] {
+    width: 100% !important; 
+  }
+  .hero-section .position-absolute[class*="translate-middle"] .row.g-2 .col-6 > div[class*="bg-white"] {
+    padding-top: 1.25rem !important;
+    padding-bottom: 1.25rem !important;
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+  }
+  .hero-section .position-absolute[class*="translate-middle"] .row.g-2 .col-6 > div[class*="bg-white"] .fw-bold {
+    font-size: 0.9rem; 
+    overflow-wrap: normal !important; 
+    word-break: normal !important;
+  }
+}
+*/
 
 @media (max-width: 768px) {
   .hero-section h1 {
