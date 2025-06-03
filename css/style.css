@@ -456,14 +456,14 @@ html {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
   border: 1px solid var(--gray-200);
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+  height: 100%; /* Ensure card takes full height of parent column */
+  display: flex !important; /* Enforce flex layout */
+  flex-direction: column !important; /* Enforce column direction for flex items */
   /* text-align: center; is likely inherited or set on parent, but can be added if needed */
 }
 
 .help-card .btn {
-  margin-top: auto; /* Push button to the bottom */
+  margin-top: auto !important; /* Force button to the bottom of the flex container */
 }
 
 @media (max-width: 576px) {
