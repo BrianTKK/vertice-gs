@@ -239,7 +239,7 @@ html {
 /*
 @media (min-width: 992px) and (max-width: 1199.98px) {
   .hero-section .position-absolute[class*="translate-middle"] {
-    width: 100% !important; 
+    width: 100% !important;
   }
   .hero-section .position-absolute[class*="translate-middle"] .row.g-2 .col-6 > div[class*="bg-white"] {
     padding-top: 1.25rem !important;
@@ -248,8 +248,8 @@ html {
     padding-right: 2rem !important;
   }
   .hero-section .position-absolute[class*="translate-middle"] .row.g-2 .col-6 > div[class*="bg-white"] .fw-bold {
-    font-size: 0.9rem; 
-    overflow-wrap: normal !important; 
+    font-size: 0.9rem;
+    overflow-wrap: normal !important;
     word-break: normal !important;
   }
 }
@@ -266,8 +266,8 @@ html {
 .btn-primary {
   background: linear-gradient(
     135deg,
-    var(--green-darker-for-btn), 
-    var(--blue-darker-for-btn) 
+    var(--green-darker-for-btn),
+    var(--blue-darker-for-btn)
   );
   border: none;
   color: white !important; /* Ensure text is white */
@@ -281,9 +281,9 @@ html {
   /* Keep the same dark gradient as default for guaranteed contrast on hover */
   background: linear-gradient(
     135deg,
-    var(--green-darker-for-btn), 
-    var(--blue-darker-for-btn) 
-  ); 
+    var(--green-darker-for-btn),
+    var(--blue-darker-for-btn)
+  );
   filter: brightness(110%); /* Slightly lighten on hover as an alternative visual cue */
   color: white !important; /* Ensure text is white */
   transform: translateY(-2px);
@@ -305,7 +305,7 @@ html {
 .hero-section .btn-outline-success:hover {
   background-color: var(--green-darker-for-btn); /* Keep dark bg for contrast */
   filter: brightness(115%); /* Slightly lighten on hover */
-  border-color: var(--green-darker-for-btn); 
+  border-color: var(--green-darker-for-btn);
   color: white;
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(5, 150, 105, 0.3);
@@ -363,26 +363,26 @@ html {
 /* .btn-outline-light on dark backgrounds */
 /* IMPORTANT: For this styling to be accessible, the .bg-danger section background itself MUST be dark enough (e.g., var(--red-darker-for-btn) or similar) to provide >4.5:1 contrast with white text. */
 .bg-danger .btn-outline-light {
-  color: white !important; 
-  border-color: white !important; 
+  color: white !important;
+  border-color: white !important;
   background-color: transparent !important; /* Ensure it's truly outline */
 }
 .bg-danger .btn-outline-light:hover {
   color: black !important; /* Or var(--gray-900) */
-  background-color: white !important; 
+  background-color: white !important;
   border-color: black !important; /* Or var(--gray-900) */
 }
 
 /* Styling for .btn-outline-light on .bg-dark (e.g., footer) can remain as is or be different if needed */
 /* For now, let's assume .bg-dark also needs to be dark enough for white text if using similar style */
-.bg-dark .btn-outline-light { 
-  color: white !important; 
-  border-color: white !important; 
+.bg-dark .btn-outline-light {
+  color: white !important;
+  border-color: white !important;
   background-color: transparent !important;
 }
 .bg-dark .btn-outline-light:hover {
   color: black !important; /* Or var(--gray-900) */
-  background-color: white !important; 
+  background-color: white !important;
   border-color: black !important; /* Or var(--gray-900) */
 }
 
@@ -457,6 +457,13 @@ html {
   transition: all 0.3s ease;
   border: 1px solid var(--gray-200);
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  /* text-align: center; is likely inherited or set on parent, but can be added if needed */
+}
+
+.help-card .btn {
+  margin-top: auto; /* Push button to the bottom */
 }
 
 @media (max-width: 576px) {
@@ -897,7 +904,7 @@ span{
 /* Increase width of info boxes' parent container on very small screens to give more space */
 @media (max-width: 390px) {
   .hero-section .position-absolute[class*="translate-middle"] {
-    width: 90% !important; 
+    width: 90% !important;
     /* Centering is handled by existing Bootstrap classes: top-50, start-50, translate-middle */
   }
 }
