@@ -222,7 +222,22 @@ html {
   }
   .hero-section .position-absolute[class*="translate-middle"] .row.g-2 .col-6 > div[class*="bg-white"] .fw-bold {
     font-size: 0.9rem; /* Slightly reduce font size from default 1rem */
-    overflow-wrap: break-word; /* Allow long words like "Monitoramento" to wrap if needed */
+    /* overflow-wrap: break-word; removed as per plan */
+  }
+}
+
+/* Medium Desktops (992px - 1199.98px): Widen info boxes for single-line text, ensure font size is 0.9rem */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .hero-section .position-absolute[class*="translate-middle"] .row.g-2 .col-6 > div[class*="bg-white"] {
+    padding-top: 1.25rem !important;
+    padding-bottom: 1.25rem !important;
+    padding-left: 2rem !important;    /* Increased horizontal padding */
+    padding-right: 2rem !important;   /* Increased horizontal padding */
+  }
+  .hero-section .position-absolute[class*="translate-middle"] .row.g-2 .col-6 > div[class*="bg-white"] .fw-bold {
+    font-size: 0.9rem; /* Ensure font size is 0.9rem, inheriting or re-stating from broader rule */
+    overflow-wrap: normal !important; /* Prevent word wrapping */
+    word-break: normal !important;    /* Prevent word breaking */
   }
 }
 
