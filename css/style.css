@@ -94,6 +94,20 @@ html {
   }
 }
 
+/* Tablet sizing for hero info box container */
+@media (min-width: 576px) and (max-width: 767.98px) { /* Corrected to 767.98px */
+  .hero-section .position-absolute[class*="translate-middle"] {
+    width: 70% !important;
+  }
+}
+
+/* Larger mobile / smaller tablet sizing for hero info box container */
+@media (min-width: 391px) and (max-width: 575.98px) { /* Corrected to 575.98px */
+  .hero-section .position-absolute[class*="translate-middle"] {
+    width: 80% !important;
+  }
+}
+
 .navbar-brand .brand-icon {
   width: 45px;
   height: 45px;
@@ -199,6 +213,17 @@ html {
 }
 .hero-section p {
   color: #fff !important; /* ou a cor desejada */
+}
+
+/* Desktop Laptops (992px - 1399.98px): Adjust hero info box sizing for better text fit */
+@media (min-width: 992px) and (max-width: 1399.98px) {
+  .hero-section .position-absolute[class*="translate-middle"] .row.g-2 .col-6 > div[class*="bg-white"] {
+    padding: 1.25rem !important; /* Increased padding from 1rem (p-3 default) */
+  }
+  .hero-section .position-absolute[class*="translate-middle"] .row.g-2 .col-6 > div[class*="bg-white"] .fw-bold {
+    font-size: 0.9rem; /* Slightly reduce font size from default 1rem */
+    /* overflow-wrap: break-word; */ /* Consider if specific long words are still an issue */
+  }
 }
 
 @media (max-width: 768px) {
@@ -868,6 +893,23 @@ span{
 .hero-section .position-absolute[class*="translate-middle"] .row.g-2 .col-6 > div[class*="bg-white"] > i.text-info {
   color: var(--info-darker-for-btn) !important;
 }
+
+/* Sizing for hero info box container on specific screen ranges */
+/* Tablet sizing for hero info box container */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .hero-section .position-absolute[class*="translate-middle"] {
+    width: 70% !important;
+  }
+}
+
+/* Larger mobile / smaller tablet sizing for hero info box container */
+@media (min-width: 391px) and (max-width: 575.98px) {
+  .hero-section .position-absolute[class*="translate-middle"] {
+    width: 80% !important;
+  }
+}
+/* Note: For screens < 391px, width is 90% (from @media max-width: 390px rule) */
+/* For screens > 767.98px, width will be auto/default unless other rules apply */
 
 
 /* Utilities */
